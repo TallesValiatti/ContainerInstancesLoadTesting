@@ -37,11 +37,11 @@ stages:
         deploy:
           steps:
             - checkout: self
-            - task: ShellScript@2
+            - task: Bash@3
               inputs:
                 targetType: 'inline'
-                script:
-                echo 'Hello world'                
+                script: |
+                  echo Hello world
             - task: AzureCLI@2
               name: DeployBicepFile
               displayName: Deploy Bicep file
