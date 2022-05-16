@@ -38,8 +38,6 @@ stages:
           steps:
             - checkout: self
             - task: Bash@3
-              name: Delete container if exists
-              displayName: Delete container if exists
               inputs:
                 targetType: 'inline'
                 script: |
