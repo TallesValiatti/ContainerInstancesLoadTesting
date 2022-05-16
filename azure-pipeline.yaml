@@ -72,3 +72,16 @@ stages:
                   --name weatherforecast-service \
                   --resource-group  rg-weatherforecast-service-prod-eastus \
                   --template-file main.bicep
+
+stages:
+- stage: LoadTest
+  displayName: Run Load test with k6
+  jobs:
+  - job: LoadTest
+    displayName: Run Load test with k6
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: k6-load-test@0
+      inputs:
+        filename: 'LoadTestScript.js'
