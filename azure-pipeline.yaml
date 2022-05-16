@@ -42,8 +42,10 @@ stages:
               name: Delete
               displayName: Delete container if exists
               inputs:
-                targetType: 'inline'
-                script: |
+                azureSubscription: $(ArmServiceConnectionName)
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
                   containerCount=$(az container list \
                                   --resource-group rg-weatherforecast-service-prod-eastus \
                                   --query "length([?name == 'aci-weatherforecast-service-prod-eastus'])")
