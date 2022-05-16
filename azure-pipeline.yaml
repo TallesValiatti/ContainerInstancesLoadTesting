@@ -37,6 +37,9 @@ stages:
         deploy:
           steps:
             - checkout: self
+            - task: ShellScript@2
+              inputs:
+                scriptPath: $(Build.SourcesDirectory)/script.sh'
             - task: AzureCLI@2
               name: DeployBicepFile
               displayName: Deploy Bicep file
