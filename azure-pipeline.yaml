@@ -39,7 +39,9 @@ stages:
             - checkout: self
             - task: ShellScript@2
               inputs:
-                scriptPath: ./script.sh'
+                targetType: 'inline'
+                Script:
+                echo 'Hello world'                
             - task: AzureCLI@2
               name: DeployBicepFile
               displayName: Deploy Bicep file
