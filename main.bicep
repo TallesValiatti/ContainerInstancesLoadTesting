@@ -24,7 +24,7 @@ param dnsNameLabel string = 'weatherforecast'
 param cpuCores int = 1
 
 @description('The amount of memory to allocate to the container in gigabytes.')
-param memoryInGb int = 2
+param memoryInGb int = 1
 
 @description('The behavior of Azure runtime if container has stopped.')
 @allowed([

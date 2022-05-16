@@ -26,6 +26,7 @@ stages:
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
+          $(tag)
 
 - stage: Deploy
   jobs:
@@ -37,7 +38,9 @@ stages:
         deploy:
           steps:
             - checkout: self
-            - task: Bash@3
+            - task: AzureCLI@2
+              name: Delete
+              displayName: Delete container if exists
               inputs:
                 targetType: 'inline'
                 script: |
