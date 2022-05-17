@@ -9,6 +9,7 @@ variables:
   tag: 'latest'
   vmImageName: 'ubuntu-latest'
   deployEnvironment: $(Environment)
+  LoadTestScript: 'LoadTestScript.js'
 
 stages:
 - stage: Build
@@ -83,4 +84,4 @@ stages:
     steps:
     - task: k6-load-test@0
       inputs:
-        filename: 'LoadTestScript.js'
+        filename: $(LoadTestScript)
